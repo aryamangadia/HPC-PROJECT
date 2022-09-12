@@ -5,10 +5,11 @@
 #include <iostream>
 
 using namespace std;
+int n = 10000;
 
-int pic[420][420][3];
+int pic[10000][10000][3];
 
-int gray_img[420][420];
+int gray_img[10000][10000];
 
 
 int dataentry(){
@@ -16,8 +17,8 @@ int dataentry(){
     int val1=255;
     int val2=0;
     int val3=128;
-    for(int i=0; i<210; i++){
-        for(int j=0; j<420; j++){
+    for(int i=0; i<5000; i++){
+        for(int j=0; j<10000; j++){
             pic[i][j][0] = val1;
             pic[i][j][1] = val2;
             pic[i][j][2] = val3;
@@ -39,8 +40,8 @@ int dataentry(){
     val1=255;
     val2=0;
     val3=128;
-    for(int i=210; i<420; i++){
-        for(int j=0; j<420; j++){
+    for(int i=5000; i<10000; i++){
+        for(int j=0; j<10000; j++){
             pic[i][j][0] = val1;
             pic[i][j][1] = val2;
             pic[i][j][2] = val3;
@@ -62,16 +63,19 @@ int dataentry(){
 }
 
 int grayscaling(){
-    for(int i=0; i<420; i++){
-        for(int j=0; j<420; j++){
+    for(int i=0; i<10000; i++){
+        for(int j=0; j<10000; j++){
             int sum = 0;
             for(int k=0; k<3; k++){
                 sum = sum + pic[i][j][k];
             }
-            lround();
-            double tanned = atan(sum);
-
-            gray_img[i][j] = sum/3;
+            sum = sum/3;
+            int sum1 = (sum*sum);
+            double tanned = atan(sum1);
+            //double tann = atan(tanned);
+            //int whole = lround(tann*255);
+            
+            gray_img[i][j] = sum;
         }
     }
     return 0;
@@ -79,8 +83,8 @@ int grayscaling(){
 }
 
 int display(){
-    for(int i=0; i<420; i++){
-        for(int j=0; j<420; j++){
+    for(int i=0; i<10000; i++){
+        for(int j=0; j<10000; j++){
             cout << gray_img[i][j];
             cout << " ";
         }
@@ -93,6 +97,6 @@ int main(){
 
 dataentry();
 grayscaling();
-display();
+//display();
 return 0;
 }
